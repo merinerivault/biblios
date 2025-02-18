@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\BookStatus;
 use App\Repository\BookRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -33,7 +34,7 @@ class Book
     private ?int $plageNumber = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $status = null;
+    private ?BookStatus $status = null;
 
     public function getId(): ?int
     {
@@ -112,12 +113,11 @@ class Book
         return $this;
     }
 
-    public function getStatus(): ?string
-    {
+    public function getStatus(): ?BookStatus    {
         return $this->status;
     }
 
-    public function setStatus(string $status): static
+    public function setStatus(BookStatus $status): static
     {
         $this->status = $status;
 
